@@ -1,0 +1,47 @@
+const options = document.querySelectorAll('.option')
+const Amount = document.querySelector('.amount')
+const result = document.querySelector('.result')
+const copiedAlert = document.querySelector('.copied-alert')
+const customInput = document.querySelector('.custom-input')
+
+let customPer = 0;
+let amount = 0;
+let value = 0;
+// Amount.value = '';
+
+
+options.forEach(option => {
+    option.addEventListener('click', () => {
+        let Datavalue = parseInt(option.getAttribute('data-value'))
+        // calculate(value)
+        value = Datavalue
+        // Amount.value = '';
+    })
+});
+
+customInput.addEventListener('input', (e) => {
+    customPer = e.target.value
+})
+
+Amount.addEventListener('input', (e) => {
+    amount = e.target.value
+})
+
+let calculate = (num) => {
+    if (customPer >= 0) {
+        num = customPer
+    }
+    console.log(customPer);
+
+    // let newValue = amount * (1 + (num / 100))
+    // result.value = newValue
+}
+
+result.addEventListener('click', () => {
+    copiedAlert.style.visibility = 'visible'
+    setTimeout(() => {
+        copiedAlert.style.visibility = 'hidden'  
+    }, 1000);
+    result.select();
+    document.execCommand('copy')
+})
